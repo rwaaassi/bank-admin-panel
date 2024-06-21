@@ -1,4 +1,4 @@
-import apiData from "../../api/apiData"
+import {getUsersData} from "../../api/apiData"
 import "./User.css"
 
 const User = () => {
