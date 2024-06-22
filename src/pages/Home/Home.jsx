@@ -29,8 +29,8 @@ const Home = () => {
             onClick={() => handleUserClicked(user)}
           >
             <img src={user.image} alt={user.name} className="user-image" />
-            <h1>Passport id: {user.passport_id}</h1>
-            <h1>Name: {user.name}</h1>
+            <h3>Passport id: {user.passport_id}</h3>
+            <h3>Name: {user.name}</h3>
             {/* <h1>Age: {user.age}</h1>
           <h1>Cash: $ {user.cash}</h1>
           <h1>Credit: $ {user.credit}</h1> */}

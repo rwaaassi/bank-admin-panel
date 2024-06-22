@@ -1,9 +1,10 @@
 .home-page {
-  /* background-color: rgb(250, 241, 160); */
   height: 100vh;
   width: 100vw;
   display: flex;
   flex-direction: column;
+  align-items: center;
+  
 }
 .header {
   display: flex;
@@ -12,41 +13,49 @@
 .users-container {
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-around;
-  margin-top: 5em;
+  justify-content: center;
+  margin-top: 1em;
+  width: 60vw;
+  gap: 60px;
 }
 .user-div {
   background-color: rgb(232, 230, 230);
-  padding: 30px;
+  padding: 20px;
   border-radius: 10px;
   border: 1px solid black;
   cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 .user-div h1 {
   text-align: center;
 }
 .user-image {
-  width: 13vw;
+  width: 10vw;
   border: 1px solid black;
 }
 .add-user {
   width: 10vw;
   height: 5vh;
-  background-color: rgb(253, 219, 49);
-  font-size: 25px;
+  background-color: rgb(203,243,255);
+  font-size: 18px;
   display: flex;
   justify-content: center;
   align-content: center;
   align-items: center;
-  margin: auto auto;
+  /* margin: auto auto; */
   margin-top: 20px;
+  margin-bottom: 10px;
   text-align: center;
   border-radius: 15px;
   cursor: pointer;
   color: black;
   border: 1px solid black;
   font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
+  
 }
 .add-user:hover {
-  background-color: rgb(207, 197, 107);
+  background-color: rgb(0,158,217);
 }

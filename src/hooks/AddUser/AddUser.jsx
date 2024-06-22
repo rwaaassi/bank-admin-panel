@@ -24,7 +24,7 @@ const AddUser = ({ onClose }) => {
 
   return (
     <div className="add-user-form">
-      <h2>Add New User</h2>
+      <h3>Add New User</h3>
       <input
         type="text"
         placeholder="Image"

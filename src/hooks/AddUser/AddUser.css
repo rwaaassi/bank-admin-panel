@@ -1,26 +1,35 @@
 .add-user-form {
-    background-color: rgb(250, 241, 160);
-    display: flex;
-    flex-direction: column;
-    width: 100vw;
-    /* margin-left: 20px; */
+  background-color: white;
+  display: flex;
+  flex-direction: column;
+  width: 20vw;
+  /* margin-left: 20px; */
+  margin-top: -35px;
+  border-radius: 15px;
+  border: 1px solid black;
+  justify-content: center;
+  align-items: center;
+margin-bottom: 10px;
+}
+.add-user-form h3 {
+    color: black;
+    margin-bottom: 3px;
 }
 .add-user-form input {
-    width: 25vw;
-    height: 5vh;
-    font-size: 22px;
-    color: rgb(14, 14, 14);
-    background-color: rgb(249, 249, 246);
-    border-radius: 5px;
-    margin-top: 10px;
+  width: 15vw;
+  height: 3.5vh;
+  font-size: 14px;
+  color: rgb(14, 14, 14);
+  background-color: rgb(249, 249, 246);
+  border-radius: 5px;
+ margin-top: 5px;
+  
 }
 .add-btns {
-    display: flex;
-    gap: 20px;
-    margin-top: 10px;
-    
-    border-radius: 10px;
-    width: vw;
-    height: 5vh;
-    font-size: 18px;
+  display: flex;
+  gap: 20px;
+  margin-top: 10px;
+  border-radius: 10px;
+  height: 3vh;
+  font-size: 14px;
 }

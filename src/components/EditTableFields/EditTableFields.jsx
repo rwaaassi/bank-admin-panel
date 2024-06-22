@@ -1,4 +1,5 @@
 import { useState } from "react";
+import "./EditTableFields.css"
 
 const EditableField = ({ label, value, onSave, buttonLabel }) => {
   const [isEditing, setIsEditing] = useState(false);
@@ -26,13 +27,13 @@ const EditableField = ({ label, value, onSave, buttonLabel }) => {
             value={inputValue}
             onChange={(e) => setInputValue(e.target.value)}
           />
-          <button onClick={handleSaveClick}>Save</button>
+          <button onClick={handleSaveClick} className="save-edit-btn">Save</button>
         </>
       ) : (
         <>
-          <h1>
+          <h4>
             {label}: {value}
-          </h1>
+          </h4>
           <button onClick={handleEditClick}>{buttonLabel}</button>
         </>
       )}
