@@ -1,0 +1,12 @@
+.transfer-withdraw-form div {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.transfer-withdraw-form input {
+    border-radius: 5px;
+    border: 1px solid black;
+}
+.transfer-withdraw-form button {
+    margin-left: 50px;
+}

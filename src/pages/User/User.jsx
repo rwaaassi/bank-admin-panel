@@ -2,8 +2,6 @@ import { useParams, useNavigate, Link } from "react-router-dom";
 import { getUsersData, useUpdateUser, useDeleteUser } from "../../api/apiData";
 import { useState, useEffect } from "react";
 import EditTableField from "../../components/EditTableFields/EditTableFields";
-import { usePromptHandler } from "../../components/usePromptHandler";
-import { useWithdrawCash, useTransferCash } from "../../api/apiData"; // Assuming correct path to API functions
 import "./User.css";
 
 const User = () => {
@@ -12,10 +10,7 @@ const User = () => {
   const updateUser = useUpdateUser();
   const deleteUser = useDeleteUser();
   const navigate = useNavigate();
-  const { prompt, handleWithdrawCashPrompt, handleTransferCashPrompt } =
-    usePromptHandler();
-  const { withdrawCash } = useWithdrawCash(); // Correct usage of useWithdrawCash hook
-  const { transferCash } = useTransferCash(); // Correct usage of useTransferCash hook
+ 
   const [user, setUser] = useState(null);
 
   useEffect(() => {
@@ -52,9 +47,7 @@ const User = () => {
     }
   };
 
-  // const handleOperationsClicked = (user) => {
-  //   navigate(`/operations/${user.id}`);
-  // };
+ 
 
   return (
     <div>
@@ -103,39 +96,8 @@ const User = () => {
         </div>
       </section>
 
-      {/* <section className="operations-container">
-        <div>
-          <h2>Other Operations:</h2>
-        </div>
-        <div className="operation-btns">
-          <button
-            onClick={() =>
-              handleWithdrawCashPrompt(withdrawCash, user, setUser)
-            }
-          >
-            Withdraw
-          </button>
-          <button
-            onClick={() =>
-              handleTransferCashPrompt(usersData, transferCash, user, setUser)
-            }
-          >
-            Transfer
-          </button>
-        </div>
-      </section> */}
+     
 
-      {prompt && (
-        <div className="custom-prompt">
-          <p>{prompt.message}</p>
-          <input
-            type="text"
-            onChange={(e) => setPrompt({ ...prompt, value: e.target.value })}
-          />
-          <button onClick={prompt.onConfirm}>Confirm</button>
-          <button onClick={prompt.onCancel}>Cancel</button>
-        </div>
-      )}
     </div>
   );
 };

@@ -1,16 +1,28 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { useParams, useNavigate } from "react-router-dom";
-import { usePromptHandler,  } from "../../components/usePromptHandler";
-import { getUsersData } from "../../api/apiData";
+import { getUsersData, useUpdateUser } from "../../api/apiData";
+import TransferForm from "../../components/TransferForm/TransferForm";
+import WithdrawForm from "../../components/WithdrawForm/WithdrawForm";
 import "./Operations.css";
 
 const Operations = () => {
   const { userId } = useParams();
   const { usersData, loading } = getUsersData();
   const navigate = useNavigate();
-  const { prompt, handleWithdrawCashPrompt, handleTransferCashPrompt } = usePromptHandler();
+  const updateUser = useUpdateUser();
+  const [user, setUser] = useState(null);
 
-  const user = usersData.find((u) => u.id === userId);
+  useEffect(() => {
+    if (!loading) {
+      const foundUser = usersData.find((u) => u.id === userId);
+      setUser(foundUser);
+    }
+  }, [loading, usersData, userId]);
+
+  const handleSave = async (field, value) => {
+    await updateUser(user.id, { [field]: value });
+    setUser((prevUser) => ({ ...prevUser, [field]: value }));
+  };
 
   if (loading) {
     return <div>Loading...</div>;
@@ -20,34 +32,22 @@ const Operations = () => {
     return <div>User not found</div>;
   }
 
+  const handleGoBack = () => {
+    navigate(`/user/${user.id}`);
+  };
+
   return (
     <div>
       <section className="operations-container">
         <div className="head">
-      <h1>Operations for User: {user.passport_id}</h1>
-          <h3>Other Operations:</h3>
+          <h1>Operations for User: {user.passport_id}</h1>
+          <button onClick={handleGoBack}>Go Back to User Page</button>
         </div>
         <div className="operation-btns">
-          <button onClick={() => handleWithdrawCashPrompt(handleWithdrawCash, user, setUser)}>
-            Withdraw
-          </button>
-          <button onClick={() => handleTransferCashPrompt(usersData, handleTransferCash, user, setUser)}>
-            Transfer
-          </button>
-          <button onClick={() => navigate(`/user/${user.id}`)}>Go Back to User Page</button>
+          <WithdrawForm user={user} setUser={setUser} />
+          <TransferForm usersData={usersData} user={user} setUser={setUser} />
         </div>
       </section>
-      {prompt && (
-        <div className="custom-prompt">
-          <p>{prompt.message}</p>
-          <input
-            type="text"
-            onChange={(e) => setPrompt({ ...prompt, value: e.target.value })}
-          />
-          <button onClick={prompt.onConfirm}>Confirm</button>
-          <button onClick={prompt.onCancel}>Cancel</button>
-        </div>
-      )}
     </div>
   );
 };

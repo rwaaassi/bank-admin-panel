@@ -5,12 +5,13 @@ import "./AddUser.css";
 const AddUser = ({ onClose }) => {
   const addUser = useAddUser();
   const [newUser, setNewUser] = useState({
-    image: "",
+    image:
+      "https://i.pinimg.com/736x/09/21/fc/0921fc87aa989330b8d403014bf4f340.jpg",
     passport_id: "",
     name: "",
     age: "",
-    cash: "",
-    credit: "",
+    cash: "0",
+    credit: "100",
   });
 
   const handleAddUser = async () => {

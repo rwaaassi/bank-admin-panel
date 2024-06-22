@@ -68,65 +68,36 @@ export const useDeleteUser = () => {
 return deleteUser
 };
 
-// Withdraw cash hook
-export const useWithdrawCash = () => {
-  const withdrawCash = async (userId, amount, userCash, userCredit) => {
-    if (amount > userCash + userCredit) {
-      throw new Error("Insufficient funds.");
-    }
+// filter Users 
+export const useFilterUsers = () => {
+  const filterUsers = async (criteria) => {
     try {
-      if (amount <= userCash) {
-        await axios.put(`${API_URL}/${userId}`, { cash: userCash - amount });
-      } else {
-        const remainingAmount = amount - userCash;
-        await axios.put(`${API_URL}/${userId}`, {
-          cash: 0,
-          credit: userCredit - remainingAmount,
-        });
-      }
+      const response = await axios.get(`${API_URL}/users?${criteria}`);
+      return response.data;
     } catch (error) {
-      console.error("Failed to withdraw cash:", error);
-      throw new Error("Failed to withdraw cash.");
+      console.error('Failed to filter users:', error);
+      throw new Error('Failed to filter users.');
     }
   };
-  return withdrawCash;
+  return filterUsers;
 };
 
-// Transfer cash hook
-export const useTransferCash = () => {
-  const transferCash = async (
-    fromUserId,
-    toUserId,
-    amount,
-    fromUserCash,
-    fromUserCredit,
-    toUserCash
-  ) => {
-    if (amount > fromUserCash + fromUserCredit) {
-      throw new Error("Insufficient funds.");
-    }
-    try {
-      if (amount <= fromUserCash) {
-        await axios.put(`${API_URL}/${fromUserId}`, {
-          cash: fromUserCash - amount,
-        });
-        await axios.put(`${API_URL}/${toUserId}`, {
-          cash: toUserCash + amount,
-        });
-      } else {
-        const remainingAmount = amount - fromUserCash;
-        await axios.put(`${API_URL}/${fromUserId}`, {
-          cash: 0,
-          credit: fromUserCredit - remainingAmount,
-        });
-        await axios.put(`${API_URL}/${toUserId}`, {
-          cash: toUserCash + amount,
-        });
-      }
-    } catch (error) {
-      console.error("Failed to transfer cash:", error);
-      throw new Error("Failed to transfer cash.");
-    }
-  };
-  return transferCash;
+// transfer Cash 
+export const transferCash = async (fromUserId, toUserId, amount) => {
+  try {
+    await axios.put(`${API_URL}/users/${fromUserId}/transfer`, { toUserId, amount });
+  } catch (error) {
+    console.error('Failed to transfer cash:', error);
+    throw new Error('Failed to transfer cash.');
+  }
 };
+
+// withdraw cash
+export const withdrawCash = async (userId, amount) => {
+   try {
+     await axios.put(`${API_URL}/${userId}`, { amount });
+   } catch (error) {
+     console.error("Failed to withdraw cash:", error);
+     throw new Error("Failed to withdraw cash.");
+   }
+ };

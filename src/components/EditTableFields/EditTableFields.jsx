@@ -10,8 +10,15 @@ const EditableField = ({ label, value, onSave, buttonLabel }) => {
   };
 
   const handleSaveClick = () => {
-    onSave(inputValue);
-    setIsEditing(false);
+     if (
+       (label === "Age" || label === "Cash" || label === "Credit") &&
+       inputValue < 0
+     ) {
+       alert("Value cannot be negative");
+       return;
+     }
+     onSave(inputValue);
+     setIsEditing(false);
   };
 
   return (
