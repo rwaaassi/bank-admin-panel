@@ -1,36 +1,16 @@
+import React from "react";
 import { useParams, useNavigate } from "react-router-dom";
-import { useState, useEffect } from "react";
-import {
-  getUsersData,
-  useWithdrawCash,
-  useTransferCash,
-  useDeleteUser,
-} from "../../api/apiData";
-import { usePromptHandler } from "../../components/usePromptHandler";
+import { usePromptHandler,  } from "../../components/usePromptHandler";
+import { getUsersData } from "../../api/apiData";
 import "./Operations.css";
 
 const Operations = () => {
   const { userId } = useParams();
   const { usersData, loading } = getUsersData();
-  const [user, setUser] = useState(null);
   const navigate = useNavigate();
-  const deleteUser = useDeleteUser();
-  const {
-    prompt,
-    setPrompt,
-    handleWithdrawCashPrompt,
-    handleTransferCashPrompt,
-  } = usePromptHandler();
+  const { prompt, handleWithdrawCashPrompt, handleTransferCashPrompt } = usePromptHandler();
 
-  const withdrawCash = useWithdrawCash();
-  const transferCash = useTransferCash();
-
-  useEffect(() => {
-    if (!loading) {
-      const foundUser = usersData.find((u) => u.id === userId);
-      setUser(foundUser);
-    }
-  }, [loading, usersData, userId]);
+  const user = usersData.find((u) => u.id === userId);
 
   if (loading) {
     return <div>Loading...</div>;
@@ -40,47 +20,23 @@ const Operations = () => {
     return <div>User not found</div>;
   }
 
-  const handleDelete = async () => {
-    const confirmDelete = window.confirm(
-      "Are you sure you want to delete this user?"
-    );
-    if (confirmDelete) {
-      try {
-        await deleteUser(user.id);
-        navigate("/");
-      } catch (error) {
-        console.error("Failed to delete user:", error);
-      }
-    }
-  };
-
   return (
     <div>
-      <h2 className="user">User: {user.id}</h2>
-
       <section className="operations-container">
-        <div>
+        <div className="head">
+      <h1>Operations for User: {user.passport_id}</h1>
           <h3>Other Operations:</h3>
         </div>
         <div className="operation-btns">
-          <button
-            onClick={() =>
-              handleWithdrawCashPrompt(withdrawCash, user, setUser)
-            }
-          >
+          <button onClick={() => handleWithdrawCashPrompt(handleWithdrawCash, user, setUser)}>
             Withdraw
           </button>
-          <button
-            onClick={() =>
-              handleTransferCashPrompt(usersData, transferCash, user, setUser)
-            }
-          >
+          <button onClick={() => handleTransferCashPrompt(usersData, handleTransferCash, user, setUser)}>
             Transfer
           </button>
-          <button onClick={handleDelete}>Delete User</button>
+          <button onClick={() => navigate(`/user/${user.id}`)}>Go Back to User Page</button>
         </div>
       </section>
-
       {prompt && (
         <div className="custom-prompt">
           <p>{prompt.message}</p>

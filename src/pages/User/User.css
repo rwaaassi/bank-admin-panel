@@ -61,14 +61,15 @@
     background-color: rgb(199, 193, 193);
    
 }
-.operations-page-btn {
+.title button {
     width: 10vw;
    background-color: rgb(203,243,255);
    border: 1px solid black;
    border-radius: 15px;
    cursor: pointer;
+   margin-top: 5px;
 }
-.operations-page-btn:hover {
+.title button:hover {
     background-color: rgb(0,158,217);
     cursor: pointer;
 }

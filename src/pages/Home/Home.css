@@ -4,6 +4,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+
   
 }
 .header {
@@ -58,4 +59,48 @@
 }
 .add-user:hover {
   background-color: rgb(0,158,217);
+}
+
+/* Responsive Styles for 360px to 750px */
+@media (max-width: 750px) {
+  .users-container {
+    width: 80vw;
+    gap: 30px;
+  }
+
+  .user-div {
+    padding: 15px;
+  }
+
+  .user-image {
+    width: 20vw;
+  }
+
+  .add-user {
+    width: 20vw;
+    height: 6vh;
+    font-size: 16px;
+  }
+}
+
+/* Responsive Styles for 750px to 950px */
+@media (min-width: 750px) and (max-width: 950px) {
+  .users-container {
+    width: 70vw;
+    gap: 40px;
+  }
+
+  .user-div {
+    padding: 18px;
+  }
+
+  .user-image {
+    width: 15vw;
+  }
+
+  .add-user {
+    width: 20vw;
+    height: 5.5vh;
+    font-size: 17px;
+  }
 }

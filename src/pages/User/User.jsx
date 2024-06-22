@@ -58,12 +58,15 @@ const User = () => {
 
   return (
     <div>
-      <div className="title"> 
+      <div className="title">
         <h2 className="user-num">User: {user.id}</h2>
 
         <Link to={`/operations/${user.id}`}>
           <button className="operations-page-btn">For Other Operations</button>
         </Link>
+        <button onClick={() => navigate(`/`)}>
+          Go Back to Home Page
+        </button>
       </div>
       <section key={user.id} className="user-container">
         <div className="user-img-id">

@@ -31,3 +31,9 @@
   background-color: rgb(0,158,217);
   border: 1px solid black;
 }
+.head {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
