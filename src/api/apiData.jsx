@@ -41,3 +41,16 @@ export const useAddUser = () => {
 
   return addUser;
 };
+
+// update user's details
+export const useUpdateUser = () => {
+  const updateUser = async (userId, updatedData) => {
+    try {
+      await axios.put(`${API_URL}/${userId}`, updatedData);
+    } catch (error) {
+      console.error("Error updating user:", error);
+    }
+  };
+
+  return updateUser;
+};
