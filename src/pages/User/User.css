@@ -1,0 +1,103 @@
+.user-container {
+    display: flex;
+    /* flex-direction: column; */
+    justify-content: center;
+    /* background-color: gray; */
+    gap: 30px;
+    margin-top: 2em;
+}
+.user-img-id {
+    display: flex;
+    flex-direction: column;
+    border-radius: 15px;
+    width: 20vw;
+    height: 43vh;
+    justify-content: center;
+    align-content: center;
+    align-items: center;
+    background-color: gray;
+}
+.user-details {
+    border-radius: 15px;
+    display: flex;
+    flex-direction: column;
+    /* margin-left: 5em; */
+    /* margin-top: 5em; */
+    background-color: gray;
+    justify-content: center;
+    align-items: center;
+    width: 20vw;
+    gap: 10px;
+}
+.user-container div {
+    display: flex;
+}
+.user-num {
+    display: flex;
+    justify-content: center;
+}
+.user-details button {
+    margin-left: 10px;
+    font-size: 18px;
+    height: 35px;
+    border-radius: 10px;
+    margin-top: 20px;
+    border: 1px solid transparent;
+    background-color: rgb(250, 241, 160);
+    cursor: pointer;
+}
+.user-details button:hover {
+    cursor: pointer;
+    background-color: rgb(242, 223, 51);
+    border: 1px solid black;
+}
+.user-details div {
+    border: 1px solid black;
+    width: 15vw;
+    display: flex;
+    justify-content: center;
+    background-color: rgb(220, 218, 218);
+}
+.user-img-id button {
+    font-size: 18px;
+    cursor: pointer;
+    height: 35px;
+    border-radius: 10px;
+    margin-top: 20px;
+    border: 1px solid transparent;
+    background-color: rgb(250, 241, 160);
+}
+.user-img-id button:hover {
+    cursor: pointer;
+  background-color: rgb(242, 223, 51);
+  border: 1px solid black;
+}
+.operations-container {
+     display: flex;
+     flex-direction: column;
+    justify-content: center;
+    margin-top: 3em
+}
+.operations-container div {
+    display: flex;
+    justify-content: center;
+}
+.operation-btns {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+}
+.operation-btns button {
+     font-size: 18px;
+    cursor: pointer;
+    height: 35px;
+    border-radius: 10px;
+    margin-top: 20px;
+    border: 1px solid transparent;
+    background-color: gray;
+}
+.operation-btns button:hover {
+     cursor: pointer;
+  background-color: rgb(220, 218, 218);
+  border: 1px solid black;
+}
